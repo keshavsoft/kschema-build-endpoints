@@ -15,6 +15,10 @@
     "node-fs-read-content": "^1.3.1"
   },
   "type": "module",
+  "scripts": {
+    "build-docs": "node build-docs.js",
+    "start": "node build-docs.js"
+  },
   "exports": {
     ".": "./index.js"
   },
