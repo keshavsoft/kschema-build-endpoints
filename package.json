@@ -1,0 +1,34 @@
+{
+  "name": "kschema-build-endpoints",
+  "version": "1.2.1",
+  "description": "find the json files in ui, and insert column config",
+  "keywords": [
+    "cli",
+    "scaffold",
+    "templates",
+    "node",
+    "project-generator"
+  ],
+  "dependencies": {
+    "kschema-pull-endpoints": "^1.4.1",
+    "kschema-pull-methods": "^1.4.2"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "bin/",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "homepage": "https://cli.keshavsoft.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/keshavsoft/kschema-build-endpoints"
+  },
+  "bugs": {
+    "url": "https://github.com/keshavsoft/kschema-build-endpoints/issues"
+  }
+}
