@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSchema Documentation Hub / ADR-001: Knowledge Graph as the Single Source of Truth — KSchema Documentation</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #070a13;
+            --bg-secondary: #0f1424;
+            --bg-tertiary: #161e33;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --primary-accent: #6366f1;
+            --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #a855f7 100%);
+            --transition-fast: all 0.15s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%);
+        }
+
+        nav {
+            height: 70px;
+            background: rgba(15, 20, 36, 0.7);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.12);
+            color: #818cf8;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-right a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition-fast);
+        }
+
+        .nav-right a:hover {
+            color: var(--text-primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px 80px 20px;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            color: #f8fafc;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #f1f5f9;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #e2e8f0;
+        }
+
+        pre {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin-bottom: 24px;
+        }
+
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--primary-accent);
+            padding: 12px 24px;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 24px;
+        }
+
+        blockquote p {
+            margin-bottom: 0;
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--border-color);
+            margin: 40px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: var(--bg-secondary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .related-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 40px;
+        }
+
+        .related-card h3 {
+            margin-top: 0;
+        }
+
+        .related-card ul {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <nav>
+        <div class="nav-left">
+            <a href="index.html" class="logo">KSchema Build Endpoints</a>
+            <a href="README.html" class="badge">Docs</a>
+        </div>
+        <div class="nav-right">
+            <a href="README.html">📚 Documentation Hub</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="README.html">Docs Hub</a> &gt; <span>KSchema Documentation Hub / ADR-001: Knowledge Graph as the Single Source of Truth</span>
+        </div>
+        <h1><a href="README.html">KSchema Documentation Hub</a> / ADR-001: Knowledge Graph as the Single Source of Truth</h1>
+<p>Status</p>
+<pre><code class="language-">Accepted</code></pre>
+<p>Date</p>
+<pre><code class="language-">2026-07-27</code></pre>
+<hr>
+<h1>Context</h1>
+<p>Initially, the goal of KSchema was to extract endpoint information from an Express application.</p>
+<p>As the architecture evolved, it became clear that endpoints are only one aspect of the application's knowledge.</p>
+<p>The application also contains</p>
+<ul>
+<li>Folder hierarchy</li>
+<li>File hierarchy</li>
+<li>Routes</li>
+<li>Imports</li>
+<li>Exports</li>
+<li>Function consumption</li>
+<li>Dependencies</li>
+<li>Controllers</li>
+<li>Services</li>
+<li>Models</li>
+</ul>
+<p>If each output (Swagger, HTML, Documentation, AI) independently parses the source code, every generator duplicates work and eventually diverges.</p>
+<hr>
+<h1>Decision</h1>
+<p>KSchema will build <strong>one canonical Knowledge Graph</strong>.</p>
+<p>Every generator must consume this graph.</p>
+<p>No generator should parse source code directly.</p>
+<pre><code class="language-">Source Code
+
+↓
+
+Knowledge Graph
+
+↓
+
+Everything Else</code></pre>
+<hr>
+<h1>Motivation</h1>
+<p>This provides</p>
+<ul>
+<li>One parsing engine</li>
+<li>One data model</li>
+<li>Multiple outputs</li>
+<li>Easy testing</li>
+<li>Easy extension</li>
+<li>Reduced maintenance</li>
+</ul>
+<hr>
+<h1>Benefits</h1>
+<h2>Single Parsing Pass</h2>
+<p>Source code is read only once.</p>
+<hr>
+<h2>Single Truth</h2>
+<p>Every consumer receives identical data.</p>
+<p>Swagger, HTML, Mermaid, AI, and documentation remain synchronized.</p>
+<hr>
+<h2>Extensibility</h2>
+<p>Adding support for</p>
+<ul>
+<li>Python</li>
+<li>Java</li>
+<li>NestJS</li>
+<li>Fastify</li>
+<li>Koa</li>
+</ul>
+<p>requires only new Story Builders.</p>
+<p>Generators remain unchanged.</p>
+<hr>
+<h2>Testability</h2>
+<p>Every package can be tested independently.</p>
+<p>Example</p>
+<pre><code class="language-">Read
+
+↓
+
+Extract
+
+↓
+
+Parse
+
+↓
+
+Story
+
+↓
+
+Knowledge Graph</code></pre>
+<p>Each stage has deterministic inputs and outputs.</p>
+<hr>
+<h1>Consequences</h1>
+<p>The Knowledge Graph becomes the heart of the framework.</p>
+<p>Every future package should either</p>
+<pre><code class="language-">Produce Stories</code></pre>
+<p>or</p>
+<pre><code class="language-">Consume the Knowledge Graph</code></pre>
+<p>Nothing should bypass it.</p>
+<hr>
+<h1>Non-Goals</h1>
+<p>KSchema is <strong>not</strong></p>
+<ul>
+<li>a runtime framework</li>
+<li>an Express replacement</li>
+<li>a dependency injection container</li>
+<li>an ORM</li>
+</ul>
+<p>Its responsibility is understanding source code.</p>
+<hr>
+<h1>Future</h1>
+<p>Future generators include</p>
+<ul>
+<li>Swagger Generator</li>
+<li>HTML Documentation</li>
+<li>Markdown Documentation</li>
+<li>Mermaid Diagrams</li>
+<li>Dependency Graphs</li>
+<li>Architecture Reports</li>
+<li>AI Context Builder</li>
+<li>Dead Code Analyzer</li>
+<li>Circular Dependency Detector</li>
+</ul>
+<p>All will consume the same Knowledge Graph.</p>
+<hr>
+<h1>Architecture</h1>
+<pre><code class="language-">Project
+
+↓
+
+Discovery
+
+↓
+
+Read
+
+↓
+
+Extract
+
+↓
+
+Parse
+
+↓
+
+Story Builders
+
+↓
+
+Knowledge Graph
+
+↓
+
+Generators</code></pre>
+<hr>
+<h1>Decision Summary</h1>
+<blockquote>
+<p><strong>Every package either produces knowledge or consumes knowledge.</strong></p>
+</blockquote>
+<p>The Knowledge Graph is the contract between those two worlds.</p>
+<hr>
+<h1>Notes</h1>
+<p>This ADR establishes the architectural foundation for every future KSchema package.</p>
+<p>Any future design decision should be evaluated against one question:</p>
+<blockquote>
+<p>Does it strengthen the Knowledge Graph, or does it bypass it?</p>
+</blockquote>
+<p>If it bypasses it, reconsider the design.</p>
+<hr>
+<h2>🔗 Related Resources</h2>
+<ul>
+<li><strong><a href="README.html">Documentation Hub</a></strong>: Explore all design manuals.</li>
+<li><strong><a href="ARCHITECTURE.html">Architecture</a></strong>: High-level architectural overview.</li>
+<li><strong><a href="STORY_MODEL.html">Story Model</a></strong>: Learn about treating Stories as primary data objects.</li>
+<li><strong><a href="PIPELINE.html">Processing Pipeline</a></strong>: Read how data flows stage by stage.</li>
+<li><strong><a href="DEPENDENCY_TREE.html">Dependency Tree</a></strong>: Understand package structure and layout.</li>
+<li><strong><a href="ROADMAP.html">Roadmap</a></strong>: Explore planned development phases.</li>
+</ul>
+
+    </div>
+
+</body>
+</html>

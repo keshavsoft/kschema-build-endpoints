@@ -386,15 +386,15 @@ Future
 
 # Documentation
 
-Comprehensive design manuals and specification details can be found under the [docs/](docs/README.md) directory:
+Comprehensive design manuals and specification details can be found under the [docs/](docs/README.html) directory:
 
-- 📚 **[Documentation Hub](docs/README.md)**: Main landing page for all design files.
-- 🏗️ **[KSchema Architecture](docs/ARCHITECTURE.md)**: High-level architectural design.
-- 🧬 **[Story Model](docs/STORY_MODEL.md)**: Recommended story-centric architecture.
-- 🌊 **[Processing Pipeline](docs/PIPELINE.md)**: Stage-by-stage pipeline processing manual.
-- 🌳 **[Dependency Tree](docs/DEPENDENCY_TREE.md)**: Component relationships and execution flow.
-- 🗺️ **[KSchema Roadmap](docs/ROADMAP.md)**: Detailed roadmap stages.
-- 📝 **[ADR-001](docs/ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md)**: Decision record for the canonical Knowledge Graph.
+- 📚 **[Documentation Hub](docs/README.html)**: Main landing page for all design files.
+- 🏗️ **[KSchema Architecture](docs/ARCHITECTURE.html)**: High-level architectural design.
+- 🧬 **[Story Model](docs/STORY_MODEL.html)**: Recommended story-centric architecture.
+- 🌊 **[Processing Pipeline](docs/PIPELINE.html)**: Stage-by-stage pipeline processing manual.
+- 🌳 **[Dependency Tree](docs/DEPENDENCY_TREE.html)**: Component relationships and execution flow.
+- 🗺️ **[KSchema Roadmap](docs/ROADMAP.html)**: Detailed roadmap stages.
+- 📝 **[ADR-001](docs/ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.html)**: Decision record for the canonical Knowledge Graph.
 
 ---
 

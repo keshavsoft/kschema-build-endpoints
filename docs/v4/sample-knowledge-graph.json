@@ -1,0 +1,142 @@
+// File: sample-knowledge-graph.json
+{
+    "project": {
+        "name": "KSchema Demo",
+        "framework": "Express.js",
+        "version": "1.0.0",
+        "rootPath": "/src",
+        "generatedOn": "2026-07-27T00:00:00Z"
+    },
+    "stories": {
+        "app": {
+            "file": {
+                "type": "app.js",
+                "fullPath": "/src/app.js"
+            },
+            "routes": [
+                {
+                    "mountPath": "/api/v1",
+                    "target": "/src/api/v1/routes.js",
+                    "routerVariable": "apiRouter"
+                }
+            ]
+        },
+        "routes": [
+            {
+                "id": "route-v1",
+                "file": {
+                    "type": "routes.js",
+                    "fullPath": "/src/api/v1/routes.js"
+                },
+                "parent": "app",
+                "children": [
+                    {
+                        "folder": "customers",
+                        "endpointFile": "/src/api/v1/customers/end-points.js"
+                    },
+                    {
+                        "folder": "products",
+                        "endpointFile": "/src/api/v1/products/end-points.js"
+                    }
+                ]
+            }
+        ],
+        "endpoints": [
+            {
+                "id": "customers",
+                "file": {
+                    "type": "end-points.js",
+                    "fullPath": "/src/api/v1/customers/end-points.js"
+                },
+                "imports": [
+                    {
+                        "type": "relative",
+                        "module": "./get.js",
+                        "importedAs": "funcFromGet"
+                    },
+                    {
+                        "type": "relative",
+                        "module": "./post.js",
+                        "importedAs": "funcFromPost"
+                    }
+                ],
+                "methods": [
+                    {
+                        "method": "get",
+                        "path": "/",
+                        "function": "funcFromGet",
+                        "lineNumber": 18,
+                        "story": {
+                            "verb": "READ",
+                            "resource": "customers",
+                            "returns": "collection"
+                        }
+                    },
+                    {
+                        "method": "post",
+                        "path": "/",
+                        "function": "funcFromPost",
+                        "lineNumber": 25,
+                        "story": {
+                            "verb": "CREATE",
+                            "resource": "customers"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "graph": {
+        "nodes": [
+            {
+                "id": "app.js",
+                "type": "application"
+            },
+            {
+                "id": "routes.js",
+                "type": "router"
+            },
+            {
+                "id": "customers/end-points.js",
+                "type": "endpoint-file"
+            },
+            {
+                "id": "funcFromGet",
+                "type": "function"
+            },
+            {
+                "id": "funcFromPost",
+                "type": "function"
+            }
+        ],
+        "edges": [
+            {
+                "from": "app.js",
+                "to": "routes.js",
+                "relation": "uses"
+            },
+            {
+                "from": "routes.js",
+                "to": "customers/end-points.js",
+                "relation": "mounts"
+            },
+            {
+                "from": "customers/end-points.js",
+                "to": "funcFromGet",
+                "relation": "calls"
+            },
+            {
+                "from": "customers/end-points.js",
+                "to": "funcFromPost",
+                "relation": "calls"
+            }
+        ]
+    },
+    "statistics": {
+        "apps": 1,
+        "routes": 1,
+        "endpointFiles": 1,
+        "methods": 2,
+        "functions": 2
+    }
+}
