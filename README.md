@@ -1,81 +1,393 @@
-# kschema-fs-ui-alter-config
+<!-- File: README.md -->
 
-> Find JSON files in your UI directory structure and inject/alter their column configurations automatically.
+# KSchema Build Endpoints
 
-`kschema-fs-ui-alter-config` is a lightweight, configuration-driven utility designed to synchronize table column configurations (`columnsConfig`) from a master schema JSON to target UI configuration files (specifically matching `**/configs/showAll.json`).
-
----
-
-## Features
-
-- 🔍 **Automated Discovery**: Recursively searches the workspace to locate `showAll.json` files within `configs/` folders.
-- ⚙️ **Config Ingestion**: Extracts column definitions from a master JSON configuration file.
-- ⚡ **Seamless Mutation**: Updates target JSON configuration files in-place with the retrieved column configuration.
-- 📦 **Version-Isolated Runtimes**: Employs a dynamic runner system that loads the latest runtime version (currently `v3`).
-- 📖 **Story-Driven Architecture**: The latest execution engine (`v3`) is structured as a clear narrative using concepts of a Scout, an Oracle, and a Blacksmith for self-documenting code.
+> Transform an Express.js project into a structured knowledge model.
 
 ---
 
-## Installation
+# Vision
 
-```bash
-npm install kschema-fs-ui-alter-config
+The objective of this project is **not** to generate Swagger directly.
+
+The objective is to understand the application's architecture by converting its folder structure, files, routes, endpoints, imports, exports and relationships into a structured JSON knowledge graph.
+
+Once the knowledge graph exists, multiple outputs become possible.
+
+- Swagger / OpenAPI
+- HTML Documentation
+- Dependency Graphs
+- AI Knowledge Base
+- Reverse Engineering
+- Architecture Reports
+- Code Navigation
+- Automatic Refactoring
+- API Visualization
+
+The JSON is the source of truth.
+
+Everything else is generated from it.
+
+---
+
+# Overall Pipeline
+
+```
+Express Project
+      │
+      ▼
+node-fs-recursive
+      │
+      ▼
+Array<FilePath>
+      │
+      ▼
+node-fs-read-content
+      │
+      ▼
+Array<FileObject>
+      │
+      ▼
+kschema-pull-endpoints
+      │
+      ▼
+Endpoint Files
+      │
+      ▼
+kschema-pull-methods
+      │
+      ▼
+Story Builder
+      │
+      ▼
+Knowledge JSON
+      │
+      ├────────► Swagger
+      │
+      ├────────► HTML Documentation
+      │
+      ├────────► Dependency Graph
+      │
+      └────────► AI Processing
 ```
 
 ---
 
-## Usage
+# Package Responsibilities
 
-### Programmatic API
+## node-fs-recursive
 
-Import the default function and invoke it with target options:
+### Responsibility
+
+Discover files.
+
+### Input
+
+```
+Folder Path
+Target File Name
+```
+
+### Output
+
+```
+Array<String>
+
+[
+    "/api/v1/customers/end-points.js",
+    "/api/v1/products/end-points.js"
+]
+```
+
+---
+
+## node-fs-read-content
+
+### Responsibility
+
+Read file contents.
+
+### Input
+
+```
+Array<FilePath>
+```
+
+### Output
 
 ```javascript
-import load from "kschema-fs-ui-alter-config";
-import path from "node:path";
+[
+    {
+        nameWithOutExtension,
+        extension,
+        basename,
+        fileFullPath,
+        fileContent
+    }
+]
+```
 
-load({
-    // The directory tree containing UI json configurations to alter
-    toPath: path.join(process.cwd(), "ui", "doctors"),
-    
-    // Path to the master JSON configuration schema containing the columnsConfig
-    configPath: path.join(process.cwd(), "Config", "Schemas", "doctors.json"),
-    
-    // The action to perform (currently supports "Crud")
-    inAction: "Crud"
-});
+This package performs **no parsing**.
+
+It only converts
+
+```
+File Path
+```
+
+↓
+
+```
+Structured File Object
 ```
 
 ---
 
-## Architecture & Code Story (v3)
+## kschema-pull-endpoints
 
-In version 3, the codebase behaves like an adventure quest rather than standard dry modules:
+### Responsibility
 
-1. **The Scout** (`scout.js`): Recursively searches the specified realm (`toPath`) to locate target gems (`showAll.json` under `configs/` subdirectories).
-2. **The Oracle** (`oracle.js`): Consults the ancient scrolls (`configPath`) to fetch the master `columnsConfig`.
-3. **The Blacksmith** (`blacksmith.js`): Transmutes/forges the target files in-place by infusing them with the columns configuration.
-4. **The Chronicle** (`index.js`): Directs the journey, orchestrating the steps from scouting to transmuting.
+Locate endpoint files.
 
----
+Current target
 
-## Local Development & Testing
-
-Clone the repository:
-```bash
-git clone https://github.com/keshavsoft/kschema-fs-ui-alter-config.git
-cd kschema-fs-ui-alter-config
-npm install
+```
+end-points.js
 ```
 
-To run the local validation tests:
-```bash
-cd test/v3
-node test.js
+Output
+
+```
+Array<FilePath>
 ```
 
 ---
 
-## License
+## kschema-pull-methods
 
-MIT
+### Responsibility
+
+Understand endpoint files.
+
+Current responsibility
+
+- Find router.get()
+- Find router.post()
+- Find router.put()
+- Find router.delete()
+- Find router.patch()
+
+Convert every endpoint into a Story object.
+
+---
+
+## buildStory()
+
+Current implementation
+
+```
+File Content
+
+↓
+
+Pattern Collector
+
+↓
+
+Regex Parser
+
+↓
+
+Story Object
+```
+
+Current Story
+
+```javascript
+{
+    filePath,
+    line,
+    lineNumber,
+    method,
+    endPoint,
+    funcToRun
+}
+```
+
+---
+
+# Current Architecture
+
+```
+Folder Discovery
+
+↓
+
+Read Files
+
+↓
+
+Extract Interesting Lines
+
+↓
+
+Apply Regex
+
+↓
+
+Split Regex Parts
+
+↓
+
+Build Story
+
+↓
+
+Return JSON
+```
+
+Each stage has exactly one responsibility.
+
+---
+
+# Design Principles
+
+## Single Responsibility
+
+Every package should solve only one problem.
+
+---
+
+## Immutable Pipeline
+
+Each package receives data.
+
+Each package returns richer data.
+
+No package should modify previous stages.
+
+---
+
+## Memory First
+
+Files are read once.
+
+Parsing should happen in memory.
+
+Avoid repeated File System access.
+
+---
+
+## Data Driven
+
+Business logic should eventually move into configuration.
+
+Example
+
+Instead of
+
+```javascript
+parseRegex3
+```
+
+the parser should receive
+
+```javascript
+{
+    regex,
+    outputMapping,
+    parserConfiguration
+}
+```
+
+making the parser generic.
+
+---
+
+# Current Roadmap
+
+## Phase 1
+
+✔ Discover endpoint files
+
+✔ Read contents
+
+✔ Extract methods
+
+✔ Build endpoint story
+
+---
+
+## Phase 2
+
+Generalize
+
+```
+buildStory()
+```
+
+using external parser definitions.
+
+---
+
+## Phase 3
+
+Support
+
+- app.js
+- routes.js
+- end-points.js
+
+using one common parsing engine.
+
+---
+
+## Phase 4
+
+Merge all stories into one Knowledge Graph.
+
+---
+
+## Phase 5
+
+Generate
+
+- Swagger
+- HTML Documentation
+- Dependency Tree
+- API Explorer
+- AI Documentation
+
+---
+
+# Current Status
+
+Completed
+
+- File discovery
+- File reading
+- Endpoint discovery
+- Method extraction
+- Story generation
+
+In Progress
+
+- Generalization
+- Knowledge Graph
+
+Future
+
+- Full Express Project Modeling
+- Swagger Generation
+- Visual Documentation
+- AI-ready Architecture JSON
+
+---
+
+# Philosophy
+
+The project is not parsing JavaScript.
+
+The project is understanding JavaScript.
+
+The final objective is to transform an application's architecture into a structured knowledge model that can be consumed by both humans and machines.
