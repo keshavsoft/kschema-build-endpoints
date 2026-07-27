@@ -1,6 +1,6 @@
 {
   "name": "kschema-build-endpoints",
-  "version": "1.2.5",
+  "version": "1.3.1",
   "description": "find the json files in ui, and insert column config",
   "keywords": [
     "cli",
