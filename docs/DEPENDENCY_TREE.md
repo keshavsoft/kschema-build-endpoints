@@ -1,6 +1,6 @@
 <!-- File: DEPENDENCY_TREE.md -->
 
-# KSchema Dependency Tree
+# [KSchema Documentation Hub](README.md) / KSchema Dependency Tree
 
 ## Complete Dependency Hierarchy
 
@@ -317,4 +317,15 @@ Knowledge Graph
 ↓
 
 Generate Outputs
+
+---
+
+## 🔗 Related Resources
+
+- **[Documentation Hub](README.md)**: Explore all design manuals.
+- **[Architecture](ARCHITECTURE.md)**: High-level architectural overview.
+- **[Story Model](STORY_MODEL.md)**: Learn about treating Stories as primary data objects.
+- **[Processing Pipeline](PIPELINE.md)**: Read how data flows stage by stage.
+- **[Roadmap](ROADMAP.md)**: Explore planned development phases.
+- **[ADR-001](ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md)**: Read the Architectural Decision Record.
 ```

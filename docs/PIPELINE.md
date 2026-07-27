@@ -1,6 +1,6 @@
 <!-- File: PIPELINE.md -->
 
-# KSchema Processing Pipeline
+# [KSchema Documentation Hub](README.md) / KSchema Processing Pipeline
 
 > The processing engine that converts source code into a Knowledge Graph.
 
@@ -517,3 +517,14 @@ Only the Story Builders change.
 > **Parse once. Understand forever.**
 
 Everything after the Knowledge Graph should be generated without touching the source code again.
+
+---
+
+## 🔗 Related Resources
+
+- **[Documentation Hub](README.md)**: Explore all design manuals.
+- **[Architecture](ARCHITECTURE.md)**: High-level architectural overview.
+- **[Story Model](STORY_MODEL.md)**: Learn about treating Stories as primary data objects.
+- **[Dependency Tree](DEPENDENCY_TREE.md)**: Understand package structure and layout.
+- **[Roadmap](ROADMAP.md)**: Explore planned development phases.
+- **[ADR-001](ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md)**: Read the Architectural Decision Record.

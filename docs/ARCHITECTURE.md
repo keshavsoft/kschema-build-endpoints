@@ -1,6 +1,6 @@
 <!-- File: ARCHITECTURE.md -->
 
-# KSchema Architecture
+# [KSchema Documentation Hub](README.md) / KSchema Architecture
 
 ## Purpose
 
@@ -384,3 +384,14 @@ Possible outputs
 - Architecture Reports
 
 The Knowledge Graph remains the single source of truth.
+
+---
+
+## 🔗 Related Resources
+
+- **[Documentation Hub](README.md)**: Explore all design manuals.
+- **[Processing Pipeline](PIPELINE.md)**: Read how data flows stage by stage.
+- **[Story Model](STORY_MODEL.md)**: Learn about treating Stories as primary data objects.
+- **[Dependency Tree](DEPENDENCY_TREE.md)**: Understand package structure and layout.
+- **[Roadmap](ROADMAP.md)**: Explore planned development phases.
+- **[ADR-001](ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md)**: Read the Architectural Decision Record.

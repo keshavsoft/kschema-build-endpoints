@@ -1,7 +1,6 @@
 <!-- File: ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md -->
 
-# ADR-001
-# Knowledge Graph as the Single Source of Truth
+# [KSchema Documentation Hub](README.md) / ADR-001: Knowledge Graph as the Single Source of Truth
 
 Status
 
@@ -241,3 +240,14 @@ Any future design decision should be evaluated against one question:
 > Does it strengthen the Knowledge Graph, or does it bypass it?
 
 If it bypasses it, reconsider the design.
+
+---
+
+## 🔗 Related Resources
+
+- **[Documentation Hub](README.md)**: Explore all design manuals.
+- **[Architecture](ARCHITECTURE.md)**: High-level architectural overview.
+- **[Story Model](STORY_MODEL.md)**: Learn about treating Stories as primary data objects.
+- **[Processing Pipeline](PIPELINE.md)**: Read how data flows stage by stage.
+- **[Dependency Tree](DEPENDENCY_TREE.md)**: Understand package structure and layout.
+- **[Roadmap](ROADMAP.md)**: Explore planned development phases.

@@ -1,6 +1,6 @@
 <!-- File: ROADMAP.md -->
 
-# KSchema Roadmap
+# [KSchema Documentation Hub](README.md) / KSchema Roadmap
 
 > Long-term roadmap for transforming an Express application into an AI-ready Knowledge Graph.
 
@@ -411,3 +411,14 @@ Refactoring Tools
 ```
 
 The Knowledge Graph is the heart of KSchema.
+
+---
+
+## 🔗 Related Resources
+
+- **[Documentation Hub](README.md)**: Explore all design manuals.
+- **[Architecture](ARCHITECTURE.md)**: High-level architectural overview.
+- **[Story Model](STORY_MODEL.md)**: Learn about treating Stories as primary data objects.
+- **[Processing Pipeline](PIPELINE.md)**: Read how data flows stage by stage.
+- **[Dependency Tree](DEPENDENCY_TREE.md)**: Understand package structure and layout.
+- **[ADR-001](ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md)**: Read the Architectural Decision Record.

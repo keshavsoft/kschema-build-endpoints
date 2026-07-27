@@ -1,6 +1,6 @@
 <!-- File: STORY_MODEL.md -->
 
-# Story Model (Recommended Architecture)
+# [KSchema Documentation Hub](README.md) / Story Model (Recommended Architecture)
 
 > This is the architecture I believe best matches your thought process.
 
@@ -302,3 +302,14 @@ Your current code is already **building stories**.
 I would embrace that idea completely and make **Story** the only universal object in the framework.
 
 Everything else becomes a specialization of a Story.
+
+---
+
+## 🔗 Related Resources
+
+- **[Documentation Hub](README.md)**: Explore all design manuals.
+- **[Architecture](ARCHITECTURE.md)**: High-level architectural overview.
+- **[Processing Pipeline](PIPELINE.md)**: Read how data flows stage by stage.
+- **[Dependency Tree](DEPENDENCY_TREE.md)**: Understand package structure and layout.
+- **[Roadmap](ROADMAP.md)**: Explore planned development phases.
+- **[ADR-001](ADR-001-KNOWLEDGE-GRAPH-AS-SOURCE-OF-TRUTH.md)**: Read the Architectural Decision Record.
