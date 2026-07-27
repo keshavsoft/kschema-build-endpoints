@@ -13,4 +13,4 @@ const k1 = defaultFunc({
 });
 
 // console.log("ssssssssss : ", k1);
-console.log("ssssssssss : ", k1);
+console.log("ssssssssss : ", JSON.stringify(k1[0], null, 2));
