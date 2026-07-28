@@ -58,7 +58,8 @@ if (isLocalVersionGreater(localVersion, publishedVersion)) {
                 `- **New Version:** \`${localVersion}\`\n` +
                 `- **NPM Link:** [${packageName} on npm](https://www.npmjs.com/package/${packageName})\n\n` +
                 `### 📢 Notified Repositories\n` +
-                `- [keshavsoft/kschema-fs-api-gen-post-actions](https://github.com/keshavsoft/kschema-fs-api-gen-post-actions)\n`
+                `- [keshavsoft/kschema-fs-api-gen-post-actions](https://github.com/keshavsoft/kschema-fs-api-gen-post-actions)\n` +
+                `- [keshavsoft/vs-code-ext-from-any-js](https://github.com/keshavsoft/vs-code-ext-from-any-js)\n`
             );
         }
     } catch (publishError) {
