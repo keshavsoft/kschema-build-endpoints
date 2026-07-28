@@ -92,7 +92,7 @@ jobs:
 
       - name: Notify kschema-fs-api-gen-post-actions
         env:
-          DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN || secrets.REPO_DISPATCH_TOKEN }}
+          DISPATCH_TOKEN: ${{ secrets.GH_PAT || secrets.DISPATCH_TOKEN || secrets.REPO_DISPATCH_TOKEN }}
         run: |
           if [ -z "$DISPATCH_TOKEN" ]; then
             echo "Warning: DISPATCH_TOKEN secret is not set. Skipping notification."
@@ -131,7 +131,7 @@ jobs:
 
       - name: Notify vs-code-ext-from-any-js (in-between)
         env:
-          DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN || secrets.REPO_DISPATCH_TOKEN }}
+          DISPATCH_TOKEN: ${{ secrets.GH_PAT || secrets.DISPATCH_TOKEN || secrets.REPO_DISPATCH_TOKEN }}
         run: |
           if [ -z "$DISPATCH_TOKEN" ]; then
             echo "Warning: DISPATCH_TOKEN secret is not set. Skipping in-between notification."
