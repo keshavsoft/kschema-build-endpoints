@@ -1,0 +1,477 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "KSchema Knowledge Graph",
+    "description": "Canonical JSON model produced by KSchema.",
+    "type": "object",
+    "properties": {
+        "project": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "rootPath": {
+                    "type": "string"
+                },
+                "generatedOn": {
+                    "type": "string"
+                },
+                "generatorVersion": {
+                    "type": "string"
+                }
+            }
+        },
+        "folders": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/folder"
+            }
+        },
+        "files": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/file"
+            }
+        },
+        "routes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/route"
+            }
+        },
+        "endpoints": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/endpoint"
+            }
+        },
+        "functions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/function"
+            }
+        },
+        "imports": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/import"
+            }
+        },
+        "exports": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/export"
+            }
+        }
+    },
+    "$defs": {
+        "folder": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "fullPath": {
+                    "type": "string"
+                },
+                "parentFolder": {
+                    "type": "string"
+                },
+                "childFolders": {
+                    "type": "array"
+                },
+                "files": {
+                    "type": "array"
+                }
+            }
+        },
+        "file": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "basename": {
+                    "type": "string"
+                },
+                "extension": {
+                    "type": "string"
+                },
+                "fullPath": {
+                    "type": "string"
+                },
+                "parentFolder": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "imports": {
+                    "type": "array"
+                },
+                "exports": {
+                    "type": "array"
+                },
+                "routes": {
+                    "type": "array"
+                },
+                "endpoints": {
+                    "type": "array"
+                },
+                "functions": {
+                    "type": "array"
+                }
+            }
+        },
+        "route": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "routerMethod": {
+                    "type": "string"
+                },
+                "targetFile": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "number"
+                },
+                "sourceFile": {
+                    "type": "string"
+                }
+            }
+        },
+        "endpoint": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "functionName": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "number"
+                },
+                "sourceFile": {
+                    "type": "string"
+                },
+                "controllerFile": {
+                    "type": "string"
+                },
+                "imports": {
+                    "type": "array"
+                },
+                "consumes": {
+                    "type": "array"
+                },
+                "exports": {
+                    "type": "array"
+                }
+            }
+        },
+        "function": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "definedIn": {
+                    "type": "string"
+                },
+                "consumedBy": {
+                    "type": "array"
+                }
+            }
+        },
+        "import": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "type": "string"
+                },
+                "module": {
+                    "type": "string"
+                },
+                "alias": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "resolvedFile": {
+                    "type": "string"
+                }
+            }
+        },
+        "export": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "KSchema Knowledge Graph",
+    "description": "Canonical JSON model produced by KSchema.",
+    "type": "object",
+    "properties": {
+        "project": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "rootPath": {
+                    "type": "string"
+                },
+                "generatedOn": {
+                    "type": "string"
+                },
+                "generatorVersion": {
+                    "type": "string"
+                }
+            }
+        },
+        "folders": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/folder"
+            }
+        },
+        "files": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/file"
+            }
+        },
+        "routes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/route"
+            }
+        },
+        "endpoints": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/endpoint"
+            }
+        },
+        "functions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/function"
+            }
+        },
+        "imports": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/import"
+            }
+        },
+        "exports": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/export"
+            }
+        }
+    },
+    "$defs": {
+        "folder": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "fullPath": {
+                    "type": "string"
+                },
+                "parentFolder": {
+                    "type": "string"
+                },
+                "childFolders": {
+                    "type": "array"
+                },
+                "files": {
+                    "type": "array"
+                }
+            }
+        },
+        "file": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "basename": {
+                    "type": "string"
+                },
+                "extension": {
+                    "type": "string"
+                },
+                "fullPath": {
+                    "type": "string"
+                },
+                "parentFolder": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "imports": {
+                    "type": "array"
+                },
+                "exports": {
+                    "type": "array"
+                },
+                "routes": {
+                    "type": "array"
+                },
+                "endpoints": {
+                    "type": "array"
+                },
+                "functions": {
+                    "type": "array"
+                }
+            }
+        },
+        "route": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "routerMethod": {
+                    "type": "string"
+                },
+                "targetFile": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "number"
+                },
+                "sourceFile": {
+                    "type": "string"
+                }
+            }
+        },
+        "endpoint": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "functionName": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "number"
+                },
+                "sourceFile": {
+                    "type": "string"
+                },
+                "controllerFile": {
+                    "type": "string"
+                },
+                "imports": {
+                    "type": "array"
+                },
+                "consumes": {
+                    "type": "array"
+                },
+                "exports": {
+                    "type": "array"
+                }
+            }
+        },
+        "function": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "definedIn": {
+                    "type": "string"
+                },
+                "consumedBy": {
+                    "type": "array"
+                }
+            }
+        },
+        "import": {
+            "type": "object",
+            "properties": {
+                "line": {
+                    "type": "string"
+                },
+                "module": {
+                    "type": "string"
+                },
+                "alias": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "resolvedFile": {
+                    "type": "string"
+                }
+            }
+        },
+        "export": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "lineNumber": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
