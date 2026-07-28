@@ -2,7 +2,9 @@ import pullEndpoints from "kschema-pull-endpoints";
 import pullMethods from "kschema-pull-methods";
 import fsReadContent from "node-fs-read-content";
 
-const startFunc = ({ toPath, inAction = "Crud", inTargetPath }) => {
+const startFunc = ({ toPath, inAction = "Crud",
+    inTargetPath, extractRegex }) => {
+
     switch (inAction) {
         case "Crud":
             let endPointsArray = [];
@@ -17,7 +19,7 @@ const startFunc = ({ toPath, inAction = "Crud", inTargetPath }) => {
                 const methodsContent = pullMethods({
                     filePath: loopEndPoint.fileFullPath,
                     fileContent: loopEndPoint.fileContent,
-                    inTargetPath
+                    inTargetPath, extractRegex
                 });
                 // console.log("aaaaaaaa : ", element);
 
