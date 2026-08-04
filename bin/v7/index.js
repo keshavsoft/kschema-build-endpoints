@@ -15,15 +15,6 @@ const startFunc = ({ toPath, inAction = "Crud", inTargetPath }) => {
 
             endpointsWithContent = fsReadContent({ filePaths: fromPullEndPoints });
 
-            // endpointsWithContent.forEach(element => {
-            //     const fileContent = element?.fileContent;
-            //     const fileType = element?.fileType;
-
-            //     const story = anyJsStory({
-            //         fileContent, fileType
-            //     });
-            // });
-
             endpointsWithContent.forEach(loopEndPoint => {
                 const methodsContent = pullMethods({
                     fileType: "fromEndPointsJs",
@@ -31,7 +22,6 @@ const startFunc = ({ toPath, inAction = "Crud", inTargetPath }) => {
                     fileContent: loopEndPoint.fileContent,
                     inTargetPath
                 });
-                // console.log("aaaaaaaa : ", element);
 
                 methodsContent.forEach(loopMethodsContent => {
                     endPointsArray.push({

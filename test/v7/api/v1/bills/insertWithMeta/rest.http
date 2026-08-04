@@ -1,6 +1,0 @@
-POST http://localhost:9012/api/v1/bills/insertWithMeta
-Content-Type: application/json
-
-{
-  "testName": ""
-}
