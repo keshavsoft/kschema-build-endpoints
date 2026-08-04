@@ -1,6 +1,6 @@
 {
   "name": "kschema-build-endpoints",
-  "version": "1.4.7",
+  "version": "1.5.1",
   "description": "find the json files in ui, and insert column config",
   "keywords": [
     "cli",
@@ -12,7 +12,8 @@
   "dependencies": {
     "kschema-pull-endpoints": "^1.5.3",
     "kschema-pull-methods": "^1.12.4",
-    "node-fs-read-content": "^1.4.1"
+    "node-fs-read-content": "^1.4.1",
+    "pattern-collector-anyjs-story": "^1.22.1"
   },
   "type": "module",
   "scripts": {
