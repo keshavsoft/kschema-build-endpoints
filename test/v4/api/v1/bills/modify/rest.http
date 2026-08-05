@@ -1,4 +1,0 @@
-PUT http://localhost:3000/api/v1/bills/modify
-Content-Type: application/json
-
-{}

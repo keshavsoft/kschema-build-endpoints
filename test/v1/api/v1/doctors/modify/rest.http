@@ -1,4 +1,0 @@
-PUT http://localhost:3000/api/v1/doctors/modify
-Content-Type: application/json
-
-{}

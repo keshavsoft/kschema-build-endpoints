@@ -1,6 +1,0 @@
-POST http://localhost:9012/api/v1/doctors/insertWithMeta
-Content-Type: application/json
-
-{
-    "doctorName":"Keshav"
-}
